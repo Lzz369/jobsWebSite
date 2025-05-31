@@ -42,3 +42,14 @@ form input[type=submit]:hover{
     cursor: pointer;
     
 }
+/* --------------------------------MESSAGE ---------------------------- */
+
+.message{
+    display: none;
+    background-color: red;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px auto;
+    text-align: center;
+}
