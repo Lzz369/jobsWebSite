@@ -4,17 +4,24 @@ const form_login = document.getElementById("form_login");
 
 
 
-const printHTTPrequest=async(url,options)=>{
+const printHTTPrequest=async(url,options,href)=>{
 
-    const message = document.querySelector(".message");
-    message.style.display="block";
-
+    const message = document.querySelector(".message"); //en esto voy a pintar los errores
+    message.style.display="block";//lo hagovisible por si puede haber algun error
+    
+    
     const data = await sendHTTPrequest(url,options); //obtengo los datos del servidor
     
-    if(data == "success") window.location.href = "pagina2.php"; //si todo es true entonces lo manda a esta url pasada por parametro 
+    if(data == "success") {
+        
+        message.style.display="none"; //lo dejo invisible porque no va a haber errores (en este codigo al menos)
+        window.location.href = href; //si todo es true entonces lo manda a esta url pasada por parametro 
+        
+    }
+    
 
     else if(data == "error") message.innerHTML = "<h5>ERROR AL CONECTAR CON LA BBDD!</h5>";
-
+    
     message.innerHTML = "<h5>USUARIOS Y/O CONTRASEÑA INCORRECTO!</h5>";
 
 
@@ -34,6 +41,6 @@ form_login.addEventListener("submit",(e) => {
         body:data
     }
 
-    printHTTPrequest("login.php",options) //manda la configuracion a esta funcion
+    printHTTPrequest("login.php",options,"../CONTENT/index.php") //manda la configuracion a esta funcion
 
 })

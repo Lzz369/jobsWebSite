@@ -6,3 +6,4 @@ export const sendHTTPrequest =async(url,options)=>{ //mando los datos al server 
     
     return data
 }
+
